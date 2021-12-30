@@ -38,7 +38,7 @@
                         bindings = <
    &kp F2     &kp N1    &kp N2        &kp N3    &kp N4    &kp N5         &kp N6            &kp N7      &kp N8     &kp N9       &kp N0   &kp BSPC
    &trans     &kp LC(A) &kp LG(LS(S)) &kp DEL   &kp LC(F) &kp HOME       &kp C_VOL_UP      &kp LG(P)   &trans     &kp LG(L)    &kp UP   &kp PSCRN
-   &kp CAPS   &kp LC(Z) &kp LC(X)     &kp LC(C) &kp LC(V) &kp END        &kp C_VOLUME_DOWN &kp C_MUTE  &kp C_PWR  &kp LEFT  &kp DOWN &kp RIGHT
+   &kp CAPS   &kp LC(Z) &kp LC(X)     &kp LC(C) &kp LC(V) &kp END        &kp C_VOLUME_DOWN &kp C_MUTE  &kp K_PWR  &kp LEFT  &kp DOWN &kp RIGHT
 				      &kp LGUI  &trans    &trans         &trans            &mo 3       &kp LG(LEFT)
                         >;
                 };
@@ -51,7 +51,7 @@
 //                     | GUI |     | SPC |   | ENT |     | ALT |
                         bindings = <
    &kp GRAVE &kp EXCL  &kp AT  &kp HASH  &kp DLLR  &kp PRCNT   &kp CARET &kp AMPS  &kp ASTRK &kp LPAR &kp RPAR &kp BSPC
-   &kp F12   &kp F1    &kp F2  &kp F3    &kp F4    &kp F5      &kp MINUS &kp EQUAL &kp LBKT  &kp RBKT &kp PIPE &kp GRAVE
+   &kp F12   &kp F1    &kp F2  &kp F3    &kp F4    &kp F5      &kp MINUS &kp EQUAL &kp GRAVE  &kp LBKT &kp RBKT &kp PIPE
    &kp F6    &kp F7    &kp F8  &kp F9    &kp F10   &kp F11     &kp UNDER &kp PLUS  &kp LBRC  &kp RBRC &kp BSLH &kp TILDE
                                &trans    &mo 3     &trans      &trans    &trans    &kp LG(DOWN)
                         >;
