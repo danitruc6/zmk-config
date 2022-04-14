@@ -45,6 +45,7 @@
                         #binding-cells = <0>;
                         tapping-term-ms = <200>;
                         bindings = <&kp FSLH>, <&kp QMARK>;
+                };
                 
                 td1: tap_dance_1 {
                         compatible = "zmk,behavior-tap-dance";
@@ -52,6 +53,7 @@
                         #binding-cells = <0>;
                         tapping-term-ms = <200>;
                         bindings = <&kp SQT>, <&kp DQT>;
+                };
                 td2: tap_dance_2 {
                         compatible = "zmk,behavior-tap-dance";
                         label = "TAP_DANCE_2";
