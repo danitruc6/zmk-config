@@ -45,6 +45,19 @@
                         #binding-cells = <0>;
                         tapping-term-ms = <200>;
                         bindings = <&kp FSLH>, <&kp QMARK>;
+                
+                td1: tap_dance_1 {
+                        compatible = "zmk,behavior-tap-dance";
+                        label = "TAP_DANCE_1";
+                        #binding-cells = <0>;
+                        tapping-term-ms = <200>;
+                        bindings = <&kp SQT>, <&kp DQT>;
+                td2: tap_dance_2 {
+                        compatible = "zmk,behavior-tap-dance";
+                        label = "TAP_DANCE_2";
+                        #binding-cells = <0>;
+                        tapping-term-ms = <200>;
+                        bindings = <&kp SEMI>, <&kp COLON>;
         };
     };
 
@@ -59,9 +72,9 @@
 // | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  |SFTENT|
 //                    |GUALT| LWR | SPC |   | SHFT| RSE  |  ?  |
                         bindings = <
-   &kp ESC       &kp Q &kp W &kp E         &kp R &kp T       &kp Y     &kp U  &kp I     &kp O   &kp P    &kp BSPC
-   &mt LCTRL TAB &kp A &kp S &kp D         &kp F &kp G       &kp H     &kp J  &kp K     &kp L   &kp SEMI &kp SQT
-   &kp LSHFT     &kp Z &kp X &kp C         &kp V &kp B       &kp N     &kp M  &kp COMMA &kp DOT &td0     &mt RSHFT ENTER
+   &kp ESC       &kp Q &kp W &kp E         &kp R &kp T       &kp Y     &kp U  &kp I     &kp O   &kp P  &kp BSPC
+   &mt LCTRL TAB &kp A &kp S &kp D         &kp F &kp G       &kp H     &kp J  &kp K     &kp L   &td2   &td1
+   &kp LSHFT     &kp Z &kp X &kp C         &kp V &kp B       &kp N     &kp M  &kp COMMA &kp DOT &td0   &mt RSHFT ENTER
                              &mt LALT LGUI &mo 1 &kp SPACE   &kp RSHFT &mo 2  &kp LG(RIGHT)
                         >;
                 };
