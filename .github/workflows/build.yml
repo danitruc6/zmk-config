@@ -42,11 +42,10 @@ jobs:
       - name: Archive (Corne Left)
         uses: actions/upload-artifact@v4
         with:
-          name: firmware
+          name: corne-left-firmware
           path: corne_left_nice_nano_v2.uf2
       - name: West Build (Corne Right)
         run: west build --pristine -s zmk/app -b nice_nano_v2 -- -DSHIELD=corne_right -DZMK_CONFIG="${GITHUB_WORKSPACE}/config"
-
       - name: Corne Right Kconfig file
         run: cat build/zephyr/.config | grep -v "^#" | grep -v "^$"
       - name: Rename zmk.uf2
@@ -54,5 +53,5 @@ jobs:
       - name: Archive (Corne Right)
         uses: actions/upload-artifact@v4
         with:
-          name: firmware
+          name: corne-right-firmware
           path: corne_right_nice_nano_v2.uf2
