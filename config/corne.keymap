@@ -40,38 +40,38 @@
 // |  ESC |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  | BKSP |
 // | CTLTB|  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |  '   |
 // | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  |SFTENT|
-//                    |GUALT| LWR | SPC |   | SHFT| RSE  |  ?  |
+//                    |GUALT| LWR | SPC |   | SHFT| RSE  | LGR |
                         bindings = <
    &kp ESC       &kp Q &kp W &kp E         &kp R &kp T       &kp Y     &kp U  &kp I     &kp O   &kp P    &kp BSPC
    &mt LCTRL TAB &kp A &kp S &kp D         &kp F &kp G       &kp H     &kp J  &kp K     &kp L   &kp SEMI &kp SQT
    &kp LSHFT     &kp Z &kp X &kp C         &kp V &kp B       &kp N     &kp M  &kp COMMA &kp DOT &kp FSLH &mt RSHFT ENTER
-                             &mt LALT LGUI &mo 1 &kp SPACE   &kp RSHFT &mo 2  &zed_em_kay
+                             &mt LALT LGUI &mo 1 &kp SPACE   &kp RSHFT &mo 2  &LG(RIGHT)
                         >;
                 };
                 lower_layer {
 // -----------------------------------------------------------------------------------------
 // |  ESC |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BKSP |
-// | BTCLR| BT1 | BT2 | BT3 | BT4 | BT5 |   | LFT | DWN |  UP | RGT |     |      |
-// | SHFT |     |     |     |     |     |   |     |     |     |     |     |      |
-//                    | GUI |     | SPC |   | ENT |     | ALT |
+// | TAB  | LCA | PTR | DEL | LCF | HOME|   | LFT | DWN |  UP | RGT |VOLUP|      |
+// | CAPS | LCZ | LCX | LCC | LCV | END |   |     | MCO | PWR | LGL |VOLDW| MUTE |
+//                    | LGUI|     |     |   |     |     | ALT |
                         bindings = <
-   &kp F2     &kp N1    &kp N2        &kp N3    &kp N4    &kp N5         &kp N6            &kp N7      &kp N8     &kp N9       &kp N0   &kp BSPC
-   &trans     &kp LC(A) &kp LG(LS(S)) &kp DEL   &kp LC(F) &kp HOME       &kp C_VOL_UP      &kp LG(P)   &trans     &kp LG(L)    &kp UP   &kp PSCRN
-   &kp CAPS   &kp LC(Z) &kp LC(X)     &kp LC(C) &kp LC(V) &kp END        &kp C_VOLUME_DOWN &kp C_MUTE  &kp K_PWR  &kp LEFT  &kp DOWN &kp RIGHT
-				      &kp LGUI  &trans    &trans         &trans            &mo 3       &kp LG(LEFT)
+   &kp F2     &kp N1    &kp N2        &kp N3    &kp N4    &kp N5         &kp N6    &kp N7       &kp N8     &kp N9     &kp N0            &trans
+   &kp TAB    &kp LC(A) &kp LG(LS(S)) &kp DEL   &kp LC(F) &kp HOME       &kp LEFT  &kp DOWN     &kp UP     &kp RIGHT  &kp C_VOL_UP      &kp PSCRN
+   &kp CAPS   &kp LC(Z) &kp LC(X)     &kp LC(C) &kp LC(V) &kp END        &trans    &zed_em_kay  &kp K_PWR  &kp LG(L)  &kp C_VOLUME_DOWN &kp C_MUTE
+				      &kp LGUI  &trans    &trans                                 &trans    &mo 3        &kp LG(LEFT)
                         >;
                 };
 
                 raise_layer {
 // -----------------------------------------------------------------------------------------
 // |  ESC |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | BKSP |
-// | CTRL |     |     |     |     |     |   |  -  |  =  |  {  |  }  | "|" |  `   |
+// | CTRL |     |     |     |     |     |   |  -  |  =  |  {  |  }  |GRAVE|  |   |
 // | SHFT |     |     |     |     |     |   |  _  |  +  |  [  |  ]  |  \  |  ~   | // TODO: Fix this row when &mkp is committed
 //                     | GUI |     | SPC |   | ENT |     | ALT |
                         bindings = <
-   &kp GRAVE &kp EXCL  &kp AT  &kp HASH  &kp DLLR  &kp PRCNT   &kp CARET &kp AMPS  &kp ASTRK &kp LPAR &kp RPAR &kp BSPC
-   &kp F12   &kp F1    &kp F2  &kp F3    &kp F4    &kp F5      &kp MINUS &kp EQUAL &kp GRAVE  &kp LBKT &kp RBKT &kp PIPE
-   &kp F6    &kp F7    &kp F8  &kp F9    &kp F10   &kp F11     &kp UNDER &kp PLUS  &kp LBRC  &kp RBRC &kp BSLH &kp TILDE
+   &kp GRAVE &kp EXCL  &kp AT  &kp HASH  &kp DLLR  &kp PRCNT   &kp CARET &kp AMPS  &kp ASTRK &kp LPAR &kp RPAR  &kp BSPC
+   &kp F1    &kp F2    &kp F3  &kp F4    &kp F5    &kp F6      &kp MINUS &kp EQUAL &kp LBRC  &kp RBRC &kp GRAVE &kp PIPE
+   &kp F7    &kp F8    &kp F9  &kp F10   &kp F11   &kp F12     &kp UNDER &kp PLUS  &kp LBKT  &kp RBKT &kp BSLH  &kp TILDE
                                &trans    &mo 3     &trans      &trans    &trans    &kp LG(DOWN)
                         >;
                 };
@@ -79,7 +79,7 @@
                 adjust_layer {
 // -----------------------------------------------------------------------------------------
 // |  ESC |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | BKSP |
-// | CTRL |     |     |     |     |     |   |  -  |  =  |  {  |  }  | "|" |  `   |
+// | BTCLR| BT1 | BT2 | BT3 | BT4 | BT5 |   |  -  |  =  |  {  |  }  | "|" |  `   |
 // | SHFT |     |     |     |     |     |   |  _  |  +  |  [  |  ]  |  \  |  ~   | // TODO: Fix this row when &mkp is committed
 //                    | GUI |     | SPC |   | ENT |     | ALT |
                         bindings = <
