@@ -72,17 +72,17 @@
 // | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  |SFTENT|
 //                    |GUALT| LWR | SPC |   | SHFT| RSE  | LGR |
             bindings = <
-   &kp ESC       &kp Q &kp W &kp E  &kp R &kp T         &kp Y     &kp U  &kp I     &kp O   &kp P  &kp BSPC
-   &mt LCTRL TAB &kp A &kp S &kp D  &kp F &kp G         &kp H     &kp J  &kp K     &kp L   &td2   &td1
-   &kp LSHFT     &kp Z &kp X &kp C  &kp V &kp B         &kp N     &kp M  &kp COMMA &kp DOT &td0   &mt RSHFT ENTER
-                             &td4   &mo 1 &kp SPACE     &kp RSHFT &mo 2  &kp LG(RIGHT)
+   &kp ESC       &kp Q &kp W &kp E          &kp R &kp T         &kp Y     &kp U  &kp I     &kp O   &kp P  &kp BSPC
+   &mt LCTRL TAB &kp A &kp S &kp D          &kp F &kp G         &kp H     &kp J  &kp K     &kp L   &td2   &td1
+   &kp LSHFT     &kp Z &kp X &kp C          &kp V &kp B         &kp N     &kp M  &kp COMMA &kp DOT &td0   &mt RSHFT ENTER
+                             &mt LALT LGUI  &mo 1 &kp SPACE     &kp RSHFT &mo 2  &kp LG(RIGHT)
             >;
         };
         
         lower_layer {
 // -----------------------------------------------------------------------------------------
 // |  ESC |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BKSP |
-// | TAB  | LCA | PTR | DEL | LCF | HOME|   | LFT | DWN |  UP | RGT |VOLUP|      |
+// | TAB  | LCA | PTR | DEL | LCF | HOME|   | LFT | DWN |  UP | RGT |VOLUP| PSCRN|
 // | CAPS | LCZ | LCX | LCC | LCV | END |   |     | MCO | PWR | LGL |VOLDW| MUTE |
 //                    | LGUI|     |     |   |     |     | ALT |
             bindings = <
@@ -96,13 +96,13 @@
         raise_layer {
 // -----------------------------------------------------------------------------------------
 // |  ESC |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | BKSP |
-// | CTRL |     |     |     |     |     |   |  -  |  =  |  {  |  }  |GRAVE|  |   |
-// | SHFT |     |     |     |     |     |   |  _  |  +  |  [  |  ]  |  \  |  ~   | // TODO: Fix this row when &mkp is committed
+// | CTRL |     |     |     |     |     |   |  -  |  =  |GRAVE|  [  |  ]  |  |   |
+// | SHFT |     |     |     |     |     |   |  _  |  +  |  {  |  }  |  \  |  ~   | // TODO: Fix this row when &mkp is committed
 //                     | GUI |     | SPC |   | ENT |     | ALT |
             bindings = <
    &kp GRAVE &kp EXCL  &kp AT  &kp HASH  &kp DLLR  &kp PRCNT   &kp CARET &kp AMPS  &kp ASTRK &kp LPAR &kp RPAR  &kp BSPC
-   &kp F1    &kp F2    &kp F3  &kp F4    &kp F5    &kp F6      &kp MINUS &kp EQUAL &kp LBRC  &kp RBRC &kp GRAVE &kp PIPE
-   &kp F7    &kp F8    &kp F9  &kp F10   &kp F11   &kp F12     &kp UNDER &kp PLUS  &kp LBKT  &kp RBKT &kp BSLH  &kp TILDE
+   &kp F1    &kp F2    &kp F3  &kp F4    &kp F5    &kp F6      &kp MINUS &kp EQUAL &kp GAVE  &kp LBKT &kp RBKT &kp PIPE
+   &kp F7    &kp F8    &kp F9  &kp F10   &kp F11   &kp F12     &kp UNDER &kp PLUS  &kp LBRC  &kp RBRC &kp BSLH  &kp TILDE
                                &trans    &mo 3     &trans      &trans    &trans    &kp LG(DOWN)
             >;
         };
