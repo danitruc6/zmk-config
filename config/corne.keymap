@@ -27,6 +27,46 @@
                 , <&macro_tap &kp X &kp W &kp E &kp N5 &kp N6 &kp N3 &kp N4 &kp EXCL>
                 ;
         };
+        
+        // Windows-style Ctrl+A (Select All) -> Mac Cmd+A
+        mac_select_all: mac_select_all {
+            label = "MAC_SELECT_ALL";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings = <&kp LG(A)>;
+        };
+        
+        // Windows-style Alt+F4 (Close Window) -> Mac Cmd+Q  
+        mac_quit_app: mac_quit_app {
+            label = "MAC_QUIT_APP";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings = <&kp LG(Q)>;
+        };
+        
+        // Windows-style Ctrl+Shift+T (Reopen Tab) -> Mac Cmd+Shift+T
+        mac_reopen_tab: mac_reopen_tab {
+            label = "MAC_REOPEN_TAB";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings = <&kp LG(LS(T))>;
+        };
+        
+        // Windows-style Alt+Tab (App Switcher) -> Mac Cmd+Tab
+        mac_app_switch: mac_app_switch {
+            label = "MAC_APP_SWITCH";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings = <&kp LG(TAB)>;
+        };
     };
 
     behaviors {
@@ -53,12 +93,22 @@
             tapping-term-ms = <200>;
             bindings = <&kp SEMI>, <&kp COLON>;
         };
+        
         td4: tap_dance_4 {
             compatible = "zmk,behavior-tap-dance";
             label = "TAP_DANCE_4";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&mt LALT LGUI>, <&kp LGUI>;
+        };
+    };
+
+    conditional_layers {
+        compatible = "zmk,conditional-layers";
+        // Cuando lower (1) y raise (2) están activos, activa adjust (3)
+        tri_layer {
+            if-layers = <1 2>;
+            then-layer = <3>;
         };
     };
 
@@ -72,7 +122,7 @@
 // | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  |SFTENT|
 //                    |GUALT| LWR | SPC |   | SHFT| RSE  | LGR |
             bindings = <
-   &kp ESC       &kp Q &kp W &kp E          &kp R &kp T         &kp Y     &kp U  &kp I     &kp O   &kp P  &kp BSPC
+   &kp ESC       &kp Q &kp W &kp E          &kp R &kp SPACE     &kp Y     &kp U  &kp I     &kp O   &kp P  &kp BSPC
    &mt LCTRL TAB &kp A &kp S &kp D          &kp F &kp G         &kp H     &kp J  &kp K     &kp L   &td2   &td1
    &kp LSHFT     &kp Z &kp X &kp C          &kp V &kp B         &kp N     &kp M  &kp COMMA &kp DOT &td0   &mt RSHFT ENTER
                              &mt LALT LGUI  &mo 1 &kp SPACE     &kp RSHFT &mo 2  &kp LG(RIGHT)
@@ -89,7 +139,7 @@
    &kp F2     &kp N1    &kp N2        &kp N3    &kp N4    &kp N5         &kp N6    &kp N7       &kp N8     &kp N9     &kp N0            &trans
    &kp TAB    &kp LC(A) &kp LG(LS(S)) &kp DEL   &kp LC(F) &kp HOME       &kp LEFT  &kp DOWN     &kp UP     &kp RIGHT  &kp C_VOL_UP      &kp PSCRN
    &kp CAPS   &kp LC(Z) &kp LC(X)     &kp LC(C) &kp LC(V) &kp END        &trans    &pw_macro    &kp K_PWR  &kp LG(L)  &kp C_VOLUME_DOWN &kp C_MUTE
-                        &kp LGUI  &trans    &trans                       &trans    &mo 3        &kp LG(LEFT)
+                        &kp LGUI      &trans    &trans                     &trans    &trans       &kp LG(LEFT)
             >;
         };
 
@@ -97,13 +147,13 @@
 // -----------------------------------------------------------------------------------------
 // |  ESC |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | BKSP |
 // | CTRL |     |     |     |     |     |   |  -  |  =  |GRAVE|  [  |  ]  |  |   |
-// | SHFT |     |     |     |     |     |   |  _  |  +  |  {  |  }  |  \  |  ~   | // TODO: Fix this row when &mkp is committed
+// | SHFT |     |     |     |     |     |   |  _  |  +  |  {  |  }  |  \  |  ~   |
 //                     | GUI |     | SPC |   | ENT |     | ALT |
             bindings = <
    &kp GRAVE &kp EXCL  &kp AT  &kp HASH  &kp DLLR  &kp PRCNT   &kp CARET &kp AMPS  &kp ASTRK &kp LPAR &kp RPAR  &kp BSPC
    &kp F1    &kp F2    &kp F3  &kp F4    &kp F5    &kp F6      &kp MINUS &kp EQUAL &kp GRAVE &kp LBKT &kp RBKT &kp PIPE
    &kp F7    &kp F8    &kp F9  &kp F10   &kp F11   &kp F12     &kp UNDER &kp PLUS  &kp LBRC  &kp RBRC &kp BSLH  &kp TILDE
-                               &trans    &mo 3     &trans      &trans    &trans    &kp LG(DOWN)
+                               &trans    &trans    &trans      &trans    &trans    &kp LG(DOWN)
             >;
         };
         
@@ -111,13 +161,84 @@
 // -----------------------------------------------------------------------------------------
 // |  ESC |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | BKSP |
 // | BTCLR| BT1 | BT2 | BT3 | BT4 | BT5 |   |  -  |  =  |  {  |  }  | "|" |  `   |
-// |      |     |     |     | RST | BOOT|   |  _  |  +  |  [  |  ]  |  \  |  ~   | // TODO: Fix this row when &mkp is committed
+// |      |     |     |     | RST | BOOT|   |  _  |  +  |  [  |  ]  |  \  |MAC ON|
 //                    | GUI |     | SPC |   | ENT |     | ALT |
             bindings = <
    &trans     &trans       &trans       &trans       &trans       &trans            &trans  &trans  &trans   &trans  &trans  &trans 
    &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4      &trans  &trans  &trans   &trans  &trans  &trans 
-   &trans     &trans       &trans       &trans       &sys_reset   &bootloader       &trans  &trans  &trans   &trans  &trans  &trans 
+   &trans     &trans       &trans       &trans       &sys_reset   &bootloader       &trans  &trans  &trans   &trans  &trans  &tog 4
                                         &trans       &trans       &trans            &trans  &trans  &trans 
+            >;
+        };
+        
+        mac_mode_layer {
+// -----------------------------------------------------------------------------------------
+// |  ESC |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  | BKSP |
+// | LGUI |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |  '   |
+// | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  |SFTENT|
+//                    | ALT | LWR | SPC |   | SHFT| RSE  | LALT|
+// Windows-to-Mac conversions based on karabiner-windows-mode:
+// - Main modifier swaps: Ctrl->Cmd, Alt->Option, Win->Ctrl  
+// - Common shortcuts: Ctrl+C->Cmd+C, Ctrl+V->Cmd+V, etc.
+// - Window management: Alt+Tab->Cmd+Tab, Alt+F4->Cmd+Q
+            bindings = <
+   &kp ESC    &kp Q &kp W &kp E    &kp R &kp T         &kp Y     &kp U  &kp I     &kp O   &kp P  &kp BSPC
+   &kp LGUI   &kp A &kp S &kp D    &kp F &kp G         &kp H     &kp J  &kp K     &kp L   &td2   &td1
+   &kp LSHFT  &kp Z &kp X &kp C    &kp V &kp B         &kp N     &kp M  &kp COMMA &kp DOT &td0   &mt RSHFT ENTER
+                    &kp LALT &mo 5 &kp SPACE           &kp RSHFT &mo 6  &kp LALT
+            >;
+        };
+        
+        mac_lower_layer {
+// -----------------------------------------------------------------------------------------
+// |  F2  |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BKSP |
+// | TAB  | SEL | SPT | DEL | FND | HOME|   | LFT | DWN |  UP | RGT |VOLUP| PSCRN|
+// | CAPS | UDO | CUT | CPY | PST | END |   |     | MCO | PWR | LCK |VOLDW| MUTE |
+//                    | ALT |     |     |   |     |     | LALT |
+// Windows-to-Mac shortcut conversions:
+// Ctrl+A -> Cmd+A (Select All), Ctrl+F -> Cmd+F (Find)
+// Ctrl+Z -> Cmd+Z (Undo), Ctrl+X -> Cmd+X (Cut)  
+// Ctrl+C -> Cmd+C (Copy), Ctrl+V -> Cmd+V (Paste)
+            bindings = <
+   &kp F2     &kp N1    &kp N2        &kp N3    &kp N4    &kp N5         &kp N6    &kp N7       &kp N8         &kp N9     &kp N0            &trans
+   &kp TAB    &kp LG(A) &kp LG(LS(S)) &kp DEL   &kp LG(F) &kp HOME       &kp LEFT  &kp DOWN     &kp UP         &kp RIGHT  &kp C_VOL_UP      &kp PSCRN
+   &kp CAPS   &kp LG(Z) &kp LG(X)     &kp LG(C) &kp LG(V) &kp END        &trans    &pw_macro    &kp K_PWR      &kp LG(L)  &kp C_VOLUME_DOWN &kp C_MUTE
+                        &kp LALT      &trans    &trans                     &trans    &mo 7        &kp LALT
+            >;
+        };
+
+        mac_raise_layer {
+// -----------------------------------------------------------------------------------------
+// |  ESC |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | BKSP |
+// |  F1  | F2  | F3  | F4  | F5  | F6  |   |  -  |  =  |GRAVE|  [  |  ]  |  |   |
+// |  F7  | F8  | F9  | F10 | F11 | F12 |   |  _  |  +  |  {  |  }  |  \  |  ~   |
+//                     | ALT |     | SPC |   | ENT |     | LALT |
+// Function keys and symbols remain mostly the same in Mac mode
+// Main difference is modifier behavior in combinations
+            bindings = <
+   &kp GRAVE &kp EXCL  &kp AT  &kp HASH  &kp DLLR  &kp PRCNT   &kp CARET &kp AMPS  &kp ASTRK &kp LPAR &kp RPAR  &kp BSPC
+   &kp F1    &kp F2    &kp F3  &kp F4    &kp F5    &kp F6      &kp MINUS &kp EQUAL &kp GRAVE &kp LBKT &kp RBKT  &kp PIPE
+   &kp F7    &kp F8    &kp F9  &kp F10   &kp F11   &kp F12     &kp UNDER &kp PLUS  &kp LBRC  &kp RBRC &kp BSLH  &kp TILDE
+                               &kp LALT  &mo 7     &trans      &trans    &trans    &kp LALT
+            >;
+        };
+        
+        mac_adjust_layer {
+// -----------------------------------------------------------------------------------------
+// |  ESC |     |     |ALTAB| F4  |     |   | TAB |     |     |     |     | BKSP |
+// | BTCLR| BT1 | BT2 | BT3 | BT4 | BT5 |   |WLEFT|WDOWN| WUP |WRGHT|     |      |
+// |      |     |     |CTAB | RST | BOOT|   |     |     |     |     |     |MAC OFF|
+//                    | ALT |     | SPC |   | ENT |     | LALT |
+// Advanced shortcuts based on karabiner-windows-mode:
+// Alt+Tab -> Cmd+Tab (App Switcher)
+// Alt+F4 -> Cmd+Q (Quit App) 
+// Ctrl+Tab -> Ctrl+Tab (Tab switching within apps)
+// Window management: Cmd+Arrow for window snapping
+            bindings = <
+   &trans     &trans       &trans         &kp LG(TAB) &kp LG(Q)     &trans            &kp LC(TAB) &trans        &trans         &trans         &trans  &trans 
+   &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1   &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4      &kp LG(LEFT) &kp LG(DOWN) &kp LG(UP)    &kp LG(RIGHT)  &trans  &trans 
+   &trans     &trans       &trans         &kp LC(TAB)  &sys_reset   &bootloader       &trans      &trans        &trans         &trans         &trans  &tog 4
+                                          &kp LALT     &trans       &trans            &trans      &trans        &kp LALT 
             >;
         };
     };
