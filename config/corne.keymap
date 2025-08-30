@@ -67,6 +67,26 @@
             tap-ms = <0>;
             bindings = <&kp LG(TAB)>;
         };
+
+        // Windows-style Home key -> Mac Cmd+Left (beginning of line)
+        mac_home: mac_home {
+            label = "MAC_HOME";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings = <&kp LG(LEFT)>;
+        };
+        
+        // Windows-style End key -> Mac Cmd+Right (end of line)
+        mac_end: mac_end {
+            label = "MAC_END";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings = <&kp LG(RIGHT)>;
+        };
     };
 
     behaviors {
@@ -171,6 +191,14 @@
             >;
         };
         
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Mac Mode
+//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
         mac_mode_layer {
 // -----------------------------------------------------------------------------------------
 // |  ESC |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  | BKSP |
@@ -182,10 +210,10 @@
 // - Common shortcuts: Ctrl+C->Cmd+C, Ctrl+V->Cmd+V, etc.
 // - Window management: Alt+Tab->Cmd+Tab, Alt+F4->Cmd+Q
             bindings = <
-   &kp ESC    &kp Q &kp W &kp E    &kp R &kp T         &kp Y     &kp U  &kp I     &kp O   &kp P  &kp BSPC
-   &kp LGUI   &kp A &kp S &kp D    &kp F &kp G         &kp H     &kp J  &kp K     &kp L   &td2   &td1
-   &kp LSHFT  &kp Z &kp X &kp C    &kp V &kp B         &kp N     &kp M  &kp COMMA &kp DOT &td0   &mt RSHFT ENTER
-                    &kp LALT &mo 5 &kp SPACE           &kp RSHFT &mo 6  &kp LALT
+   &kp ESC         &kp Q &kp W &kp E              &kp R &kp T         &kp Y     &kp U  &kp I     &kp O   &kp P  &kp BSPC
+   &mt LCTRL TAB   &kp A &kp S &kp D              &kp F &kp G         &kp H     &kp J  &kp K     &kp L   &td2   &td1
+   &kp LSHFT       &kp Z &kp X &kp C              &kp V &kp B         &kp N     &kp M  &kp COMMA &kp DOT &td0   &mt RSHFT ENTER
+                               &mt LALT LG(SPACE) &mo 5 &kp SPACE     &kp RSHFT &mo 6  &kp LGUI
             >;
         };
         
@@ -201,9 +229,9 @@
 // Ctrl+C -> Cmd+C (Copy), Ctrl+V -> Cmd+V (Paste)
             bindings = <
    &kp F2     &kp N1    &kp N2        &kp N3    &kp N4    &kp N5         &kp N6    &kp N7       &kp N8         &kp N9     &kp N0            &trans
-   &kp TAB    &kp LG(A) &kp LG(LS(S)) &kp DEL   &kp LG(F) &kp HOME       &kp LEFT  &kp DOWN     &kp UP         &kp RIGHT  &kp C_VOL_UP      &kp PSCRN
-   &kp CAPS   &kp LG(Z) &kp LG(X)     &kp LG(C) &kp LG(V) &kp END        &trans    &pw_macro    &kp K_PWR      &kp LG(L)  &kp C_VOLUME_DOWN &kp C_MUTE
-                        &kp LALT      &trans    &trans                     &trans    &mo 7        &kp LALT
+   &kp TAB    &kp LG(A) &kp LG(LS(S)) &kp DEL   &kp LG(F) &mac_home      &kp LEFT  &kp DOWN     &kp UP         &kp RIGHT  &kp C_VOL_UP      &kp PSCRN
+   &kp CAPS   &kp LG(Z) &kp LG(X)     &kp LG(C) &kp LG(V) &mac_end       &trans    &pw_macro    &kp K_PWR      &kp LG(L)  &kp C_VOLUME_DOWN &kp C_MUTE
+                        &kp LGUI      &trans    &trans                   &trans    &mo 7        &kp LALT
             >;
         };
 
